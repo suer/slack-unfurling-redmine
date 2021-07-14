@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    slack-unfurling-redmine
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+    Function:
+        Timeout: 30
+
+Parameters:
+    RedmineAPIAccessKey:
+        Type: String
+        Default: your-token
+    SlackOauthAccessToken:
+        Type: String
+        Default: your-slack-oauth-token
+
+Resources:
+
+    SlackUnfrulingRedmineFunction:
+        Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+        Properties:
+            CodeUri: slack-unfurling-redmine/
+            Handler: app.lambda_handler
+            Runtime: ruby2.7
+            Environment:
+                Variables:
+                    REDMINE_API_ACCESS_KEY: !Ref RedmineAPIAccessKey
+                    SLACK_OAUTH_ACCESS_TOKEN: !Ref SlackOauthAccessToken
+            MemorySize: 128
+            Events:
+                SlackUnfrulingRedmine:
+                    Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+                    Properties:
+                        Path: /call
+                        Method: post
+
+Outputs:
+
+    SlackUnfrulingRedmineApi:
+      Description: "API Gateway endpoint URL for Prod stage for Slack Unfurling Redmine function"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/call/"
+
+    SlackUnfrulingRedmineFunction:
+      Description: "Slack Unfurling Redmine Lambda Function ARN"
+      Value: !GetAtt SlackUnfrulingRedmineFunction.Arn
+
+    SlackUnfrulingRedmineFunctionIamRole:
+      Description: "Implicit IAM Role created for Slack Unfurling Redmine function"
+      Value: !GetAtt SlackUnfrulingRedmineFunctionRole.Arn
