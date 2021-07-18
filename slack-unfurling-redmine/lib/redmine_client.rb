@@ -59,12 +59,10 @@ class RedmineClient
     end
 
 
-    description = issue['description']&.lines[0, 10].map { |line| line.chomp }.join("\n")
-
     {
       title: title,
       title_link: url,
-      text: description,
+      text: trancate(issue['description']),
       color: COLOR,
       fields: fields
     }
@@ -72,8 +70,8 @@ class RedmineClient
 
   private
 
-  def truncate(body)
-    body.lines[0, 10].map { |item| item.chomp }.join("\n")
+  def truncate(description)
+    description&.lines[0, 10].map { |line| line.chomp }.join("\n")
   end
 end
 
