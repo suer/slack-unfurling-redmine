@@ -58,11 +58,10 @@ class RedmineClient
       end
     end
 
-
     {
       title: title,
       title_link: url,
-      text: trancate(issue['description']),
+      text: truncate(issue['description']),
       color: COLOR,
       fields: fields
     }
