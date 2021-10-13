@@ -75,3 +75,9 @@ $ aws cloudformation describe-stacks --stack-name your-slack-unfurling-redmine -
 Input your endpoint url to `Request URL` in `Event Subscriptions`.
 
 Click `Save Changes`.
+
+### delete
+
+```bash
+$ sam delete
+```
