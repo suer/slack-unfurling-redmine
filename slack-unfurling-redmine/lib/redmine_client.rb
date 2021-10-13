@@ -48,7 +48,7 @@ class RedmineClient
       }
     end
 
-    if issue['custom_fields']
+    if issue['custom_fields'] && !ignore_custom_fields?
       fields += issue['custom_fields'].map do |custom_field|
       {
         title: custom_field['name'],
@@ -71,6 +71,10 @@ class RedmineClient
 
   def truncate(description)
     description&.lines[0, 10].map { |line| line.chomp }.join("\n")
+  end
+
+  def ignore_custom_fields?
+    %w(true t yes y).include?(ENV['IGNORE_CUSTOM_FIELDS'])
   end
 end
 

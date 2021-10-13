@@ -64,6 +64,8 @@ $ sam deploy \
 
 Confirm your endpoint url.
 
+(To ignore custom fields, add IgnoreCustomFields=true for parameter-overrides.)
+
 
 ```bash
 $ aws cloudformation describe-stacks --stack-name your-slack-unfurling-redmine --region ap-northeast-1

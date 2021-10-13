@@ -14,6 +14,9 @@ Parameters:
     SlackOauthAccessToken:
         Type: String
         Default: your-slack-oauth-token
+    IgnoreCustomFields:
+        Type: String
+        Default: false
 
 Resources:
 
@@ -27,6 +30,7 @@ Resources:
                 Variables:
                     REDMINE_API_ACCESS_KEY: !Ref RedmineAPIAccessKey
                     SLACK_OAUTH_ACCESS_TOKEN: !Ref SlackOauthAccessToken
+                    IGNORE_CUSTOM_FIELDS: !Ref IgnoreCustomFields
             MemorySize: 128
             Events:
                 SlackUnfrulingRedmine:
