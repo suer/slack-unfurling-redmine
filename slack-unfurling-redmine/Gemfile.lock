@@ -1,15 +1,31 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    crack (0.4.5)
+      rexml
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    hashdiff (1.0.1)
+    minitest (5.15.0)
+    minitest-stub_any_instance (1.0.3)
     multipart-post (2.1.1)
+    public_suffix (4.0.7)
+    rexml (3.2.5)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   faraday
+  minitest
+  minitest-stub_any_instance
+  webmock
 
 BUNDLED WITH
    2.1.4
