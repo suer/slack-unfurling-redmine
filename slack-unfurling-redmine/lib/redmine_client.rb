@@ -25,7 +25,6 @@ class RedmineClient
 
     title = "#{issue['project']['name']} | #{issue['subject']}"
 
-
     fields = ['tracker', 'status', 'priority', 'author'].map do |key|
       if issue[key]
         {
@@ -63,7 +62,7 @@ class RedmineClient
       title_link: url,
       text: truncate(issue['description']),
       color: COLOR,
-      fields: fields
+      fields: skip_fields? ? [] : fields
     }
   end
 
@@ -71,6 +70,10 @@ class RedmineClient
 
   def truncate(description)
     description&.lines[0, 10].map { |line| line.chomp }.join("\n")
+  end
+
+  def skip_fields?
+    %w(true t yes y).include?(ENV['SKIP_FIELDS'])
   end
 
   def ignore_custom_fields?
