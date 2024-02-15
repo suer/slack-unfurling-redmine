@@ -3,20 +3,20 @@ GEM
   specs:
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
-    base64 (0.1.1)
     crack (0.4.5)
       rexml
-    faraday (2.7.11)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-net_http (3.1.0)
+      net-http
     hashdiff (1.0.1)
     minitest (5.20.0)
     minitest-stub_any_instance (1.0.3)
+    net-http (0.4.1)
+      uri
     public_suffix (5.0.3)
     rexml (3.2.6)
-    ruby2_keywords (0.0.5)
+    uri (0.13.0)
     webmock (3.19.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
