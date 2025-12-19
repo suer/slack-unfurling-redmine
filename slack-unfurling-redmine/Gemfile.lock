@@ -18,7 +18,7 @@ GEM
     logger (1.7.0)
     minitest (6.0.0)
       prism (~> 1.5)
-    minitest-stub_any_instance (1.0.3)
+    minitest-mock (5.27.0)
     net-http (0.6.0)
       uri
     prism (1.7.0)
@@ -36,7 +36,7 @@ PLATFORMS
 DEPENDENCIES
   faraday
   minitest
-  minitest-stub_any_instance
+  minitest-mock
   webmock
 
 BUNDLED WITH
