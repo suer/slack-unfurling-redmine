@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require 'minitest/stub_any_instance'
+require 'minitest/mock'
 require 'webmock/minitest'
 
 require_relative '../../app.rb'
@@ -29,8 +29,11 @@ class AppTest < Minitest::Test
 
     expected_result = { statusCode: 200, body: JSON.generate(challenge: 'example') }
 
-    RedmineClient.stub_any_instance(:'enabled?', true) do
-      assert_equal(expected_result, lambda_handler(event: e, context: ''))
+    redmine_client = RedmineClient.new
+    redmine_client.stub(:enabled?, true) do
+      RedmineClient.stub(:new, redmine_client) do
+        assert_equal(expected_result, lambda_handler(event: e, context: ''))
+      end
     end
   end
 
@@ -76,7 +79,8 @@ class AppTest < Minitest::Test
 
     expected_result = { statusCode: 200, body: JSON.generate(ok: true) }
 
-    RedmineClient.stub_any_instance(:'enabled?', true) do
+    redmine_client = RedmineClient.new
+    RedmineClient.stub(:new, redmine_client) do
       assert_equal(expected_result, lambda_handler(event: e, context: ''))
     end
   end
