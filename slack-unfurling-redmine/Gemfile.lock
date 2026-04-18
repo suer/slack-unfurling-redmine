@@ -15,7 +15,7 @@ GEM
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
     hashdiff (1.2.1)
-    json (2.18.1)
+    json (2.19.3)
     logger (1.7.0)
     minitest (6.0.3)
       drb (~> 2.0)
@@ -42,4 +42,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.6.2
+  4.0.6
