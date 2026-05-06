@@ -28,7 +28,7 @@ Resources:
         Properties:
             CodeUri: slack-unfurling-redmine/
             Handler: app.lambda_handler
-            Runtime: ruby3.4
+            Runtime: ruby4.0
             Environment:
                 Variables:
                     REDMINE_API_ACCESS_KEY: !Ref RedmineAPIAccessKey
